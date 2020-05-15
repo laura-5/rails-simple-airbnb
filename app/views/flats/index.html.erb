@@ -1,0 +1,17 @@
+<h1>BEST FLATS EVER</h1>
+
+  <% if @query %>
+    <p>You searched for <strong><%= @query %></strong>. We found <%= @flats.count %> flats out of our <%= Flat.count %> on our website.</p>
+    <% else %>
+    <p>Discover our  <%= Flat.count %> flats.</p>
+    <% end %>
+
+<ul>
+  <% @flats.each do |flat| %>
+    <h4><%= flat.name %></h4>
+    <p><%= flat.address %></p>
+    <%= link_to 'More info', flat_path(flat) %>
+  <% end %>
+</ul>
+
+<%= link_to 'Create a new flat', new_flat_path %>
